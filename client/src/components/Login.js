@@ -35,39 +35,39 @@ const Login = (props) => {
     }
 
     return (
-        <body class={loginreg.body}>
+        <div className={loginreg.body}>
 
-            <p class={loginreg.welcome}>Welcome to </p>
-            <p class={loginreg.pageTitle}>Workers Login</p>
+            <p className={loginreg.welcome}>Welcome to </p>
+            <p className={loginreg.pageTitle}>Workers Login</p>
 
-            <div class={loginreg.container}>
-                <div class={loginreg.forms}>
-                    <div class={loginreg.loginForm}>
+            <div className={loginreg.container}>
+                <div className={loginreg.forms}>
+                    <div className={loginreg.loginForm}>
                         <form onSubmit={submitHandler}>
-                        <span class={loginreg.title}>Login</span>
-                            <div class={loginreg.inputField}>
+                        <span className={loginreg.title}>Login</span>
+                            <div className={loginreg.inputField}>
                                 <input type="text" placeholder="Enter your email" name="email" onChange={onChangeHandler} value={userLogin.email}/>
                             </div>
-                            <div class={loginreg.inputField}>
+                            <div className={loginreg.inputField}>
                                 <input type="password" placeholder="Enter your password" name="password" onChange={onChangeHandler} value={userLogin.password}/>
                             </div>
                             {
                                 errors.message?
-                                <p class={loginreg.error}>{errors.message}</p>:null
+                                <p className={loginreg.error}>{errors.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
-                                <input type="submit" class={loginreg.button} value="Login Now"/>
+                            <div className={loginreg.inputField}>
+                                <input type="submit" className={loginreg.button} value="Login Now"/>
                             </div>
                         </form>
 
-                        <div class={loginreg.loginSignup}>
-                            <span class="text">Need to register? </span>
+                        <div className={loginreg.loginSignup}>
+                            <span className="text">Need to register? </span>
                             <a href='/' to={'/'}>Register</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
 )}
 
 export default Login;
