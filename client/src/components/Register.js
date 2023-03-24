@@ -2,8 +2,10 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import React, {useState} from 'react';
 import loginreg from './loginreg.module.css'
+import useAuth from '../hooks/useAuth';
 
 const Register = (props) => {
+    const {setAuth} = useAuth()
     const navigate = useNavigate()
     const [errors, setErrors] = useState({})
     const [userReg, setUserReg] = useState({
@@ -12,8 +14,7 @@ const Register = (props) => {
         lastName:'',
         email:'',
         password:'',
-        confirmPassword:'',
-        role: 'Default'
+        confirmPassword:''
     })
 
     const onChangeHandler = (e) => {
@@ -25,8 +26,9 @@ const Register = (props) => {
         axios.post('http://localhost:8000/api/register', userReg, {withCredentials:true})
             .then((res) => {
                 console.log(res);
-                window.localStorage.setItem('uuid', res.data.user._id)
-                navigate('/dashboard')
+                const accessToken = res?.data?.accessToken;
+                setAuth({user:res.data.user, accessToken});
+                navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
                 console.log(err);
