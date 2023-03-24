@@ -1,11 +1,11 @@
 import { useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios'
-import React, {useState, useContext} from 'react';
-import { userContext } from '../context/UserContext';
+import React, {useState} from 'react';
 import loginreg from './loginreg.module.css'
+import useAuth from '../hooks/useAuth';
 
 const ManagerLogin = (props) => {
-    const {loggedInUser, setLoggedInUser} = useContext(userContext)
+    const {setAuth} = useAuth();
     const path = useLocation().pathname;
     const [errors, setErrors] = useState({})
     const location = path.split('/')[1]
@@ -24,10 +24,10 @@ const ManagerLogin = (props) => {
         axios.post('http://localhost:8000/api/login', userLogin, {withCredentials:true})
             .then((res) => {
                 console.log("RES DATA", res);
-                setLoggedInUser(res.data.user)
-                console.log("LOGGED IN USER:", loggedInUser)
-                window.localStorage.setItem('uuid', res.data.user._id)
-                navigate('/dashboard/management')
+
+                const accessToken = res?.data?.accessToken;
+                setAuth({user:res.data.user, accessToken});
+                navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
                 console.log(err);
