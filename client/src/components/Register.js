@@ -40,65 +40,65 @@ const Register = (props) => {
     }
 
     return (
-        <body class={loginreg.body}>
+        <div className={loginreg.body}>
 
-            <p class={loginreg.welcome}>Welcome to </p>
-            <p class={loginreg.pageTitle}>Work Register</p>
+            <p className={loginreg.welcome}>Welcome to </p>
+            <p className={loginreg.pageTitle}>Work Register</p>
 
-            <div class={loginreg.container}>
-                <div class={loginreg.forms}>
-                    <div class={loginreg.registerForm}>
+            <div className={loginreg.container}>
+                <div className={loginreg.forms}>
+                    <div className={loginreg.registerForm}>
                         <form onSubmit={submitHandler}>
-                        <span class={loginreg.title}>Register</span>
-                            <div class={loginreg.inputField}>
+                        <span className={loginreg.title}>Register</span>
+                            <div className={loginreg.inputField}>
                                 <input type="text" name="firstName" placeholder="Enter your first name" onChange={onChangeHandler} value={userReg.firstName}/>
                             </div>
                             {
                                 errors.firstName?
-                                <p class={loginreg.error}>{errors.firstName.message}</p>:null
+                                <p className={loginreg.error}>{errors.firstName.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
+                            <div className={loginreg.inputField}>
                                 <input type="text" name="lastName" placeholder="Enter your last name" onChange={onChangeHandler} value={userReg.lastName}/>
                             </div>
                             {
                                 errors.lastName?
-                                <p class={loginreg.error}>{errors.lastName.message}</p>:null
+                                <p className={loginreg.error}>{errors.lastName.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
+                            <div className={loginreg.inputField}>
                                 <input type="text" name="email" placeholder="Enter your email" onChange={onChangeHandler} value={userReg.email}/>
                             </div>
                             {
                                 errors.email?
-                                <p class={loginreg.error}>{errors.email.message}</p>:null
+                                <p className={loginreg.error}>{errors.email.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
+                            <div className={loginreg.inputField}>
                                 <input type="password" name="password" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.password}/>
                             </div>
                             {
                                 errors.password?
-                                <p class={loginreg.error}>{errors.password.message}</p>:null
+                                <p className={loginreg.error}>{errors.password.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
+                            <div className={loginreg.inputField}>
                                 <input type="password" name="confirmPassword" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.confirmPassword}/>
                             </div>
                             {
                                 errors.confirmPassword?
-                                <p class={loginreg.error}>{errors.confirmPassword.message}</p>:null
+                                <p className={loginreg.error}>{errors.confirmPassword.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
-                                <input type="submit" class={loginreg.button} value="Sign up"/>
+                            <div className={loginreg.inputField}>
+                                <input type="submit" className={loginreg.button} value="Sign up"/>
                             </div>
                     
                         </form>
 
-                        <div class={loginreg.loginSignup}>
-                            <span class="text">Already a user? </span>
+                        <div className={loginreg.loginSignup}>
+                            <span className="text">Already a user? </span>
                             <a href='/login' to={'/login'}>Login</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
 )}
 
 export default Register;
