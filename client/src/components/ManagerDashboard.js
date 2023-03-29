@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import {formatDate} from '../utilities/formatDate'
 import Nav from './Nav';
 import './dashboard.css'
 import axios from 'axios';
@@ -15,7 +16,7 @@ const ManagerDashboard = () => {
 
     const navigate = useNavigate()
 
-    const [allTask, setAllTask] = useState({})
+    const [allTask, setAllTask] = useState([])
 
     const newTask = () => {
         navigate('/newTask')
@@ -41,14 +42,17 @@ const ManagerDashboard = () => {
                     <thead>
                         <tr>
                             <th>Task</th>
+                            <th>Date Due</th>
                             <th>Assign Task</th>
                         </tr>
                     </thead>
                     {
-                        allTask.map((task, index) => (
+                        
+                        allTask?.map((task) => (
                             <tbody key={task._id}>
                                 <tr>
                                     <td>{task.task}</td>
+                                    <td>{formatDate(task.date)}</td>
                                 </tr>
                             </tbody>
                         ))

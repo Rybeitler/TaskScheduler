@@ -6,19 +6,20 @@ import './nav.css'
 
 const Nav = (props) => {
 
-    const {auth} = useAuth()
+    const {auth, setAuth} = useAuth()
 
 
     const navigate = useNavigate()
 
     const handleHome = (e) => {
-        navigate('/dashboard/manager')
+        navigate(`/dashboard/${auth.user.role}`)
     }
 
     const handleLogout = (e) => {
-        axios.post('http://localhost:8000/api/logout', {})
+        axios.get('http://localhost:8000/api/logout', {withCredentials:true})
         .then((res) => {
             console.log(res);
+            setAuth({})
             navigate('/login')
         })
         .catch((err) => {

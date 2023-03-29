@@ -23,14 +23,14 @@ const Login = (props) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/login', userLogin, {withCredentials:true})
             .then((res) => {
-                console.log("RES DATA", res);
+                //console.log("RES DATA", res);
                 const accessToken = res?.data?.accessToken;
                 setAuth({user:res.data.user, accessToken});
                 navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
-                console.log(err);
-                setErrors(err.response.data.error)
+                //console.log(err);
+                setErrors(err.response.data)
             })
     }
 
