@@ -1,15 +1,20 @@
 import React from 'react';
-import useAuth from '../hooks/useAuth';
+import Nav from './Nav';
+import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
     //placeholder to test w/
     //user is stored in auth, can import with useAuth() hook for ease of use
     // the? after auth and user are conditional chaining. they basically check for,
     //1st val before they try to render, stops api from crashing app
-    const {auth} = useAuth()
+
+    const navigate = useNavigate();
+
     return (
         <div>
-            <h1>Hi {auth?.user?.role}, {auth?.user?.firstName}</h1>
+            <header>
+                <Nav />
+            </header>
         </div>
     );
 }

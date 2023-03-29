@@ -1,0 +1,30 @@
+.content-container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content-table thead tr {
+    background: #3e4a61;
+    color: #d9dad7;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+padding: 10px 24px;
+}
+
+.content-table tbody tr {
+border-bottom: 1px solid #c24d2c;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+border-bottom: 2px solid #3e4a61;
+
+}
