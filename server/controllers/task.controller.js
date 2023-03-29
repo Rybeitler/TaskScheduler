@@ -2,8 +2,12 @@ const Task = require('../models/task.model');
 
 module.exports.createTask = (request, response) => {
     Task.create(request.body) 
-        .then(task => response.json(task))
-        .catch(err => response.json(err));
+        .then((task) => {
+            response.json(task)
+        })
+        .catch((err) => {
+            response.status(500).json(err)
+        })
 };
 
 module.exports.getAllTask = (request, response) => {

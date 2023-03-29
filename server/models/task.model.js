@@ -6,7 +6,7 @@ const TaskSchema = new mongoose.Schema({
         minLength: [3, "Task field must be at least 3 characters long"]
     },
     date: { 
-        type: String, 
+        type: Date, 
         required: [true, "Date is required"],
     },
     instructions: { 
