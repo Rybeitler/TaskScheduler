@@ -83,13 +83,13 @@ module.exports = {
         //check if there are cookies
         const cookies = req.cookies;
         if (!cookies?.jwt) {
-            return res.sendStatus(401).json('no cookie');
+            return res.json('no cookie');
         }
         //check if refresh token is in db
         const refreshToken = cookies.jwt;
         const foundUser = await User.findOne({ refreshToken:refreshToken }).exec();
         if (!foundUser){
-            return res.sendStatus(403); 
+            return res.json('user not found'); 
         }
         //verify + issue new access token
         jwt.verify(
