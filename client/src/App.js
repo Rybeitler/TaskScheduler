@@ -7,6 +7,8 @@ import PersistLogin from './components/PersistLogin';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
 import UserDashboard from './components/UserDashboard';
+import ManagerDashboard from './components/ManagerDashboard';
+import TaskForm from './components/TaskForm';
 
 
 function App() {
@@ -31,7 +33,8 @@ function App() {
 
             <Route element={<RequireAuth allowedRoles={'manager'}/>}>
               {/* routes for managers only here*/}
-              <Route path='/dashboard/manager' element={'manager'}/>
+              <Route path='/dashboard/manager' element={<ManagerDashboard/>}/>
+              <Route path='/newTask' element={<TaskForm/>}/>
             </Route>
           </Route>
           </Route>
