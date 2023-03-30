@@ -11,7 +11,7 @@ module.exports.createTask = (request, response) => {
 };
 
 module.exports.getAllTask = (request, response) => {
-    Task.find({})
+    Task.find({}).sort({date:'asc'})
         .then(task => {
             console.log(task); 
             response.json(task);
@@ -32,6 +32,28 @@ module.exports.updateTask = (request, response) => {
     Task.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
         .then(updatedtask => response.json(updatedtask))
         .catch(err => response.json(err))
+}
+
+module.exports.addNote = async (req,res) =>{
+    try{
+        let note = req.body.note 
+        const updatedTask = await Task.findOneAndUpdate({_id:req.params.id}, {$push: {notes:note}}, {new:true})
+        res.json(updatedTask)
+    }
+    catch(err){
+        res.status(500).json({error:err})
+    }
+}
+
+module.exports.assignUser = async (req,res)=>{
+    try{
+        userId = req.body.assignTask
+        const updatedTask = await Task.findOneAndUpdate({_id:req.params.id}, {user_id:userId}, {new:true})
+        res.json(updatedTask)
+    }
+    catch(err){
+        res.status(500).json({error:err})
+    }
 }
 
 module.exports.deleteTask = (request, response) => {

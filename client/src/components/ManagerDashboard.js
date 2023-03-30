@@ -16,7 +16,7 @@ const ManagerDashboard = () => {
     const {auth} = useAuth()
 
     const navigate = useNavigate()
-
+    const [users, setUsers] = useState([])
     const [allTask, setAllTask] = useState([])
 
 
@@ -35,6 +35,21 @@ const ManagerDashboard = () => {
             })
     }, [])
 
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api/allUsers')
+            .then(res=>{
+                setUsers(res.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    },[])
+
+    const findName = (user_id)=>{
+        let user = users?.find(u=>u._id===user_id)
+        return user?.firstName
+    }
+
 
     return (
         <div>
@@ -47,6 +62,7 @@ const ManagerDashboard = () => {
                         <tr>
                             <th>Task</th>
                             <th>Date Due</th>
+                            <th>Currently Assigned?</th>
                             <th>Assign Task</th>
                         </tr>
                     </thead>
@@ -56,7 +72,12 @@ const ManagerDashboard = () => {
                                 <tr>
                                     <td>{task.task}</td>
                                     <td>{formatDate(task.date)}</td>
-                                    <td><AssignForm/></td>
+                                    {
+                                        task?.user_id
+                                            ?<td>{findName(task.user_id)}</td> 
+                                            :<td>Not Assigned</td>
+                                    }
+                                    <td><AssignForm users={users} allTask={allTask} setAllTask={setAllTask} id={task._id}/></td>
                                 </tr>
                             </tbody>
                         ))

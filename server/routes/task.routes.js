@@ -5,5 +5,7 @@ module.exports = (app) => {
     app.get('/api/allTask', TaskController.getAllTask);
     app.get('/api/oneTask/:id', TaskController.getTask);
     app.put('/api/task/:id', TaskController.updateTask);
-    app.delete('/api/task/:id', TaskController.deleteTask);
+    app.put('/api/addNote/:id', TaskController.addNote)
+    app.put('/api/assignUser/:id', TaskController.assignUser)
+    app.delete('/api/deleteTask/:id', TaskController.deleteTask);
 };

@@ -9,6 +9,7 @@ import RequireAuth from './components/RequireAuth';
 import UserDashboard from './components/UserDashboard';
 import ManagerDashboard from './components/ManagerDashboard';
 import TaskForm from './components/TaskForm';
+import TaskDetails from './components/TaskDetails';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route element={<RequireAuth allowedRoles={'user'}/>}>
               {/* routes for users only here*/}
               <Route path='/dashboard/user' element={<UserDashboard/>}/>
+              <Route path='/task/details/:id' element={<TaskDetails/>}/>
             </Route>
 
             <Route element={<RequireAuth allowedRoles={'manager'}/>}>
