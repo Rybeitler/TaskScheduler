@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import {formatDate} from '../utilities/formatDate'
+import AssignForm from './AssignForm';
 import Nav from './Nav';
 import './dashboard.css'
 import axios from 'axios';
@@ -18,9 +19,11 @@ const ManagerDashboard = () => {
 
     const [allTask, setAllTask] = useState([])
 
+
     const newTask = () => {
         navigate('/newTask')
     }
+
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/allTask`)
@@ -31,6 +34,7 @@ const ManagerDashboard = () => {
                 console.log(err)
             })
     }, [])
+
 
     return (
         <div>
@@ -47,12 +51,12 @@ const ManagerDashboard = () => {
                         </tr>
                     </thead>
                     {
-                        
                         allTask?.map((task) => (
                             <tbody key={task._id}>
                                 <tr>
                                     <td>{task.task}</td>
                                     <td>{formatDate(task.date)}</td>
+                                    <td><AssignForm/></td>
                                 </tr>
                             </tbody>
                         ))
