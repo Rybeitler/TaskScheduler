@@ -43,7 +43,7 @@ const UserDashboard = () => {
     }
 
     return (
-        <div>
+        <div class>
             <header>
                 <Nav />
             </header>

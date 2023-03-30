@@ -101,7 +101,7 @@ const Register = (props) => {
                     </div>
                 </div>
             </div>
-        </body>
+        
 )}
 
 export default Register;
