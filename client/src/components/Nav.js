@@ -28,11 +28,6 @@ const Nav = (props) => {
     }
 
     return(
-        // <div className='nav-container'>
-        //     <h1>Hi {auth?.user?.role}, {auth?.user?.firstName}!</h1>
-        //     <button onClick={handleHome}>Home</button>
-        //     <button onClick={handleLogout}>Logout</button>
-        // </div>
         <body>
             <nav>
                 <label class={Navbar.logo}>TaskScheduler</label>
