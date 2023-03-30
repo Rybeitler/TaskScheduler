@@ -1,39 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AssignForm = (props) => {
-
     const navigate = useNavigate()
 
-    const [allUsers, setAllUsers] = useState([])
+    const {users, allTask, setAllTask, id} = props 
 
+    const allUsers = users.filter(user=>user.role!=="manager")
 
     const [assignTask, setAssignTask] = useState({
         user_id:''
     })
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/allUsers')
-        .then((allUsers) => {
-            console.log(allUsers)
-            setAllUsers(allUsers.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }, [])
-
     const handleInputChange = (e) => {
-        setAssignTask({...assignTask, [e.target.name]: e.target.value})
+        setAssignTask(e.target.value)
     }
     
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8000/api/newTask', assignTask)
+        axios.put(`http://localhost:8000/api/assignUser/${id}`, {assignTask})
             .then((res) => {
-                console.log(res)
+
+                setAllTask(allTask.map(task=>{
+                    return task._id == res.data._id
+                        ?res.data
+                        :task
+                }))
+
                 navigate('/dashboard/manager')
             })
             .catch((err) => {
@@ -46,14 +41,15 @@ const AssignForm = (props) => {
     return(
         <div>
             <form onSubmit={handleSubmit}>
+            <select name="user"  onChange={handleInputChange} value={assignTask.user_id} >
+                <option value="none" hidden>select a user</option>
                 {
                     allUsers.map((user) => (
-                        <select name="user_id" key={user._id} onChange={handleInputChange} value={assignTask.user_id}>
-                            <option>{user.firstName}</option>
-                        </select>
+                            <option key={user._id} value={user._id}>{user.firstName}</option>
                     ))
                 }
-                <input type='submit' value='Add New Task'/>
+                </select>
+                <input type='submit' value='Assign'/>
             </form>
         </div>
     )

@@ -17,6 +17,9 @@ const TaskSchema = new mongoose.Schema({
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User"
-    }
+    }, 
+    notes:[{
+        type:String
+    }]
 }, { timestamps: true });
 module.exports = mongoose.model('Task', TaskSchema);

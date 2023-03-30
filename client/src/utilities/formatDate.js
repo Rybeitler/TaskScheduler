@@ -1,4 +1,7 @@
 export function formatDate(date){
+    if(!date){
+        return
+    }
     var cleaned = date.split('-')
     var dd = cleaned.slice(1).pop()
     dd = dd.split('T')[0]
