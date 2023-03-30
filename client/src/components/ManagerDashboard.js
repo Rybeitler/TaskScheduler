@@ -85,7 +85,7 @@ const ManagerDashboard = () => {
                 </table>
             </div>
             <div>
-                <button onClick={newTask}>New Task</button>
+                <button onClick={newTask} class="button-5"role="button">New Task</button>
             </div>
         </div>
     );

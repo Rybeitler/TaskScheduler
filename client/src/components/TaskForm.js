@@ -38,8 +38,9 @@ const TaskForm = (props) => {
             <header>
                 <Nav />
             </header>
-            <div>
+            <div className='task-flex'>
                 <form onSubmit={handleSubmit} className='form-container'>
+                    <h1>Add a New Task</h1>
                     <label>Task</label>
                     <input type='text' onChange={handleInputChange} value={task.task} name='task'/>
                     {
@@ -63,8 +64,7 @@ const TaskForm = (props) => {
                         <p className='errors'>{errors.task.instructions}</p>:
                         null
                     }
-
-                    <input type='submit' value='Add New Task'/>
+                    <button class="button-4"role="button">Submit</button>
                 </form>
             </div>
         </div>
