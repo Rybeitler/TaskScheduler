@@ -43,40 +43,44 @@ const UserDashboard = () => {
     }
 
     return (
-        <div>
+        <div className='bg-color'>
             <header>
                 <Nav />
             </header>
 
-            <h2>All Tasks</h2>
-            <div className='content-container'>
-                <table className='content-table'>
-                    <thead>
-                        <tr>
-                            <th>Task</th>
-                            <th>Date Due</th>
-                            <th>Assigned To</th>
-                        </tr>
-                    </thead>
-                    {
-                        
-                        allTasks?.map((task) => (
-                            <tbody key={task._id}>
-                                <tr>
-                                    <td>{task.task}</td>
-                                    <td>{formatDate(task.date)}</td>
-                                    {
-                                            task?.user_id
-                                                ?<td>{findName(task.user_id)}</td> 
-                                                :<td>Not Assigned</td>
-                                    }
-                                </tr>
-                            </tbody>
-                        ))
-                    }
-                </table>
+            <div className='allTask-bg'>
+                
+                <h2>All Tasks</h2>
+                <div className='content-container'>
+                    <table className='content-table'>
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Date Due</th>
+                                <th>Assigned To</th>
+                            </tr>
+                        </thead>
+                        {
+                            
+                            allTasks?.map((task) => (
+                                <tbody key={task._id}>
+                                    <tr>
+                                        <td>{task.task}</td>
+                                        <td>{formatDate(task.date)}</td>
+                                        {
+                                                task?.user_id
+                                                    ?<td>{findName(task.user_id)}</td> 
+                                                    :<td>Not Assigned</td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            ))
+                        }
+                    </table>
+                </div>
             </div>
-            
+
+            <div className='myTask-bg'>
                 <h2>My Tasks</h2>
                 <div className='content-container'>
                     <table className='content-table'>
@@ -100,6 +104,7 @@ const UserDashboard = () => {
                             ))
                         }
                     </table>
+                </div>
             </div>
         </div>
     );
