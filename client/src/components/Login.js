@@ -46,10 +46,10 @@ const Login = (props) => {
                         <form onSubmit={submitHandler}>
                         <span class={loginreg.title}>Login</span>
                             <div class={loginreg.inputField}>
-                                <input type="text" placeholder="Enter your email" name="email" onChange={onChangeHandler} value={userLogin.email}/>
+                                <input type="text" placeholder="Enter your email" name="email" onChange={onChangeHandler} value={userLogin.email} class={loginreg.input}/>
                             </div>
                             <div class={loginreg.inputField}>
-                                <input type="password" placeholder="Enter your password" name="password" onChange={onChangeHandler} value={userLogin.password}/>
+                                <input type="password" placeholder="Enter your password" name="password" onChange={onChangeHandler} value={userLogin.password} class={loginreg.input}/>
                             </div>
                             {
                                 errors.message?
