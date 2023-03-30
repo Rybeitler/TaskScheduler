@@ -45,11 +45,13 @@ UserSchema.pre('validate', function(next) {
     })
 
 UserSchema.pre('save', function(next) {
+    const user = this;
+    if (!user.isModified('password')) return next();
     bcrypt.hash(this.password, 10)
         .then(hash => {
-            this.password = hash
-            next()
-        })
-})
+        this.password = hash;
+        next();
+        });
+    });
 
 module.exports = mongoose.model("User", UserSchema)

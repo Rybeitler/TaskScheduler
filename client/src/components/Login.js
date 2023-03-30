@@ -23,26 +23,26 @@ const Login = (props) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/login', userLogin, {withCredentials:true})
             .then((res) => {
-                console.log("RES DATA", res);
+                //console.log("RES DATA", res);
                 const accessToken = res?.data?.accessToken;
                 setAuth({user:res.data.user, accessToken});
                 navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
-                console.log(err);
+                //console.log(err);
                 setErrors(err.response.data)
             })
     }
 
     return (
-        <body class={loginreg.body}>
+        <div className={loginreg.body}>
 
-            <p class={loginreg.welcome}>Welcome to </p>
-            <p class={loginreg.pageTitle}>Workers Login</p>
+            <p className={loginreg.welcome}>Welcome to </p>
+            <p className={loginreg.pageTitle}>Workers Login</p>
 
-            <div class={loginreg.container}>
-                <div class={loginreg.forms}>
-                    <div class={loginreg.loginForm}>
+            <div className={loginreg.container}>
+                <div className={loginreg.forms}>
+                    <div className={loginreg.loginForm}>
                         <form onSubmit={submitHandler}>
                         <span class={loginreg.title}>Login</span>
                             <div class={loginreg.inputField}>
@@ -53,21 +53,21 @@ const Login = (props) => {
                             </div>
                             {
                                 errors.message?
-                                <p class={loginreg.error}>{errors.message}</p>:null
+                                <p className={loginreg.error}>{errors.message}</p>:null
                             }
-                            <div class={loginreg.inputField}>
-                                <input type="submit" class={loginreg.button} value="Login Now"/>
+                            <div className={loginreg.inputField}>
+                                <input type="submit" className={loginreg.button} value="Login Now"/>
                             </div>
                         </form>
 
-                        <div class={loginreg.loginSignup}>
-                            <span class="text">Need to register? </span>
+                        <div className={loginreg.loginSignup}>
+                            <span className="text">Need to register? </span>
                             <a href='/' to={'/'}>Register</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
 )}
 
 export default Login;

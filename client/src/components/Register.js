@@ -31,10 +31,10 @@ const Register = (props) => {
                 navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
-                console.log(err);
+                console.log('here'+err);
                 if(!err.response.data.verified){
-                    console.log("REGISTER ERROR")
-                    setErrors(err.response.data.error.errors)
+                    console.log("REGISTER ERROR", err.response.data.message)
+                    setErrors({email:{message:err.response.data.message}})
                 }
             })
     }
