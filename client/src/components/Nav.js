@@ -33,6 +33,7 @@ const Nav = (props) => {
                 <label class={Navbar.logo}>TaskScheduler</label>
                 <div class={Navbar.links}>
                     {/* Left side links */}
+                    <h2>Welcome, {auth?.user?.role} {auth?.user?.firstName}</h2>
                     <ul class={Navbar.ul}>
                         <li class={Navbar.li}><button class={Navbar.button} onClick={handleHome}>Home</button></li>
                     </ul>
