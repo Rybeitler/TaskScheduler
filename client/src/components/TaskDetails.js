@@ -4,6 +4,8 @@ import {useParams, useNavigate} from 'react-router-dom'
 import { formatDate } from '../utilities/formatDate';
 import useAuth from '../hooks/useAuth';
 import Nav from './Nav';
+import './dashboard.css'
+import './taskDetails.css'
 
 const TaskDetails = () => {
     const {auth} = useAuth()
@@ -46,29 +48,38 @@ const TaskDetails = () => {
             .catch(err=>console.log(err))
     }
     return (
-        <div>
+        <div className='bg-color'>
             <Nav/>
             <div>
                 {loaded &&
-                <div>
-                                <h2>Details for Task: {task?.task}</h2>
-                                <h3>Assigned to {auth?.user?.firstName}</h3>
-                                <h3>Due on: {formatDate(task?.date)}</h3>
-                                <h3>Instructions: {task.instructions}</h3>
-                                {
-                                    task?.notes?.map((note, idx)=>(
-                                        <p key={idx}>{note}</p>
-                                    ))
-                                }
-                </div>
+                    <div className='task-container'>
+                        <div className='task-content'>
+                            <h2>Details for Task: {task?.task}</h2>
+                            <h3>Assigned to {auth?.user?.firstName}</h3>
+                            <h3>Due on: {formatDate(task?.date)}</h3>
+                            <h3>Instructions: {task.instructions}</h3>
+                        </div>
+                    </div>
                 }
-                <div>
-                <form onSubmit={addNote}>
-                    <label>Add A New Note</label>
-                    <textarea name="newNote" cols="30" rows="10" onChange={changeHandler} value={note}></textarea>
-                    <button>Add Note</button>
-                </form>
-                <button onClick={removeTask}>Task Completed</button>
+                <div className='note-form'>
+                    <div className='notes'>
+                        <h2>User Notes:</h2>
+                        {
+                            task?.notes?.map((note, idx)=>(
+                                <p key={idx} >{note}</p>
+                            ))
+                        }
+                    </div>
+                    <form onSubmit={addNote}>
+                        <h4>Add A New Note:</h4>
+                        <textarea name="newNote" cols="30" rows="10" onChange={changeHandler} value={note}></textarea>
+                        <div>
+                            <button class="button-4"role="button">Add Note</button>
+                        </div>
+                    </form>
+                    <div className='remove-task'>
+                        <button onClick={removeTask}  class="button-24"role="button">Task Completed</button>
+                    </div>
                 </div>
             </div>
         </div>
