@@ -55,9 +55,9 @@ const TaskDetails = () => {
                     <div className='task-container'>
                         <div className='task-content'>
                             <h2>Details for Task: {task?.task}</h2>
-                            <h3>Assigned to {auth?.user?.firstName}</h3>
-                            <h3>Due on: {formatDate(task?.date)}</h3>
-                            <h3>Instructions: {task.instructions}</h3>
+                            <p><span style={{fontWeight:"bold"}}>Assigned to:</span> {auth?.user?.firstName}</p>
+                            <p><span style={{fontWeight:"bold"}}>Due on:</span> {formatDate(task?.date)}</p>
+                            <p><span style={{fontWeight:"bold"}}>Instructions:</span> {task.instructions}</p>
                         </div>
                     </div>
                 }

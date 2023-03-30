@@ -29,9 +29,11 @@ const Nav = (props) => {
 
     return(
         <div className='nav-container'>
-            <h1>Hi {auth?.user?.role}, {auth?.user?.firstName}!</h1>
-            <button onClick={handleHome}>Home</button>
-            <button onClick={handleLogout}>Logout</button>
+            <h1> {(auth?.user?.role).toUpperCase()} Dashboard, Welcome {auth?.user?.firstName}!</h1>
+            <div>
+                <button onClick={handleHome}>Home</button>
+                <button onClick={handleLogout}>Logout</button>
+            </div>
         </div>
     )
 }
