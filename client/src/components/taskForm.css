@@ -1,0 +1,13 @@
+/* .taskForm-bg{
+
+} */
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    border-top: 2px solid #3e4a61;
+    border-bottom: 2px solid #3e4a61;
+}

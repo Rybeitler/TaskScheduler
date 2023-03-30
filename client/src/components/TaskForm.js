@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Nav from './Nav';
+import './taskForm.css'
 
 const TaskForm = (props) => {
 
@@ -33,12 +34,12 @@ const TaskForm = (props) => {
     }
 
     return(
-        <div>
+        <div className='taskForm-bg'>
             <header>
                 <Nav />
             </header>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='form-container'>
                     <label>Task</label>
                     <input type='text' onChange={handleInputChange} value={task.task} name='task'/>
                     {

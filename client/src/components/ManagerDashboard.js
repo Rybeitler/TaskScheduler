@@ -52,7 +52,7 @@ const ManagerDashboard = () => {
 
 
     return (
-        <div>
+        <div className='manager-bg'>
             <header>
                 <Nav />
             </header>
