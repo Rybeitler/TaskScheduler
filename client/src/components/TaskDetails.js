@@ -72,7 +72,7 @@ const TaskDetails = () => {
                     </div>
                     <form onSubmit={addNote}>
                         <h4>Add A New Note:</h4>
-                        <textarea name="newNote" cols="30" rows="10" onChange={changeHandler} value={note}></textarea>
+                        <textarea name="newNote" cols="30" rows="3" onChange={changeHandler} value={note}></textarea>
                         <div>
                             <button class="button-4"role="button">Add Note</button>
                         </div>

@@ -41,10 +41,12 @@
 /* USER DASHBAORD STYLES */
 .bg-color{
     background-color: #0092ca;
+    display: flex;
+    flex-direction: column;
 }
 
 .allTask-bg{
-    height: 400px;
+    /* height: 400px; */
 }
 
 .myTask-bg {
