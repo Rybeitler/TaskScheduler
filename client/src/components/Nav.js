@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import './nav.css'
+import Navbar from './nav.module.css'
 
 const Nav = (props) => {
 
@@ -28,13 +28,21 @@ const Nav = (props) => {
     }
 
     return(
-        <div className='nav-container'>
-            <h1> {(auth?.user?.role).toUpperCase()} Dashboard, Welcome {auth?.user?.firstName}!</h1>
-            <div>
-                <button onClick={handleHome}>Home</button>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-        </div>
+        <body>
+            <nav>
+                <label class={Navbar.logo}>TaskScheduler</label>
+                <div class={Navbar.links}>
+                    {/* Left side links */}
+                    <ul class={Navbar.ul}>
+                        <li class={Navbar.li}><button class={Navbar.button} onClick={handleHome}>Home</button></li>
+                    </ul>
+                    {/* Right side links */}
+                    <ul class={Navbar.ul}> 
+                        <li class={Navbar.li}><button class={Navbar.button} onClick={handleLogout}>Logout</button></li>
+                    </ul>
+                </div>
+            </nav>
+        </body>
     )
 }
 

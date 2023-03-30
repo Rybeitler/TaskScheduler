@@ -44,12 +44,12 @@ const Login = (props) => {
                 <div className={loginreg.forms}>
                     <div className={loginreg.loginForm}>
                         <form onSubmit={submitHandler}>
-                        <span className={loginreg.title}>Login</span>
-                            <div className={loginreg.inputField}>
-                                <input type="text" placeholder="Enter your email" name="email" onChange={onChangeHandler} value={userLogin.email}/>
+                        <span class={loginreg.title}>Login</span>
+                            <div class={loginreg.inputField}>
+                                <input type="text" placeholder="Enter your email" name="email" onChange={onChangeHandler} value={userLogin.email} class={loginreg.input}/>
                             </div>
-                            <div className={loginreg.inputField}>
-                                <input type="password" placeholder="Enter your password" name="password" onChange={onChangeHandler} value={userLogin.password}/>
+                            <div class={loginreg.inputField}>
+                                <input type="password" placeholder="Enter your password" name="password" onChange={onChangeHandler} value={userLogin.password} class={loginreg.input}/>
                             </div>
                             {
                                 errors.message?

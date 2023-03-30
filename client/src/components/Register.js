@@ -93,14 +93,15 @@ const Register = (props) => {
                     
                         </form>
 
-                        <div className={loginreg.loginSignup}>
-                            <span className="text">Already a user? </span>
-                            <a href='/login' to={'/login'}>Login</a>
+                            <div class={loginreg.loginSignup}>
+                                <span class="text">Already a user? </span>
+                                <a class={loginreg.hyperlink} href='/login' to={'/login'}>Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </body>
 )}
 
 export default Register;
