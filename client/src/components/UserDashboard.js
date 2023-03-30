@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios'
@@ -10,7 +10,7 @@ const UserDashboard = () => {
     //user is stored in auth, can import with useAuth() hook for ease of use
     // the? after auth and user are conditional chaining. they basically check for,
     //1st val before they try to render, stops api from crashing app
-    const {auth} = useAuth()
+    const { auth } = useAuth()
     const [allTasks, setAllTasks] = useState([])
     const [users, setUsers] = useState([])
     const navigate = useNavigate();
@@ -20,90 +20,91 @@ const UserDashboard = () => {
         axios.get(`http://localhost:8000/api/allTask`)
             .then((res) => {
                 setAllTasks(res.data)
-                setUserTasks(res.data.filter(task=>task.user_id===auth.user._id))
+                setUserTasks(res.data.filter(task => task.user_id === auth.user._id))
             })
-            .catch((err) =>{
+            .catch((err) => {
                 console.log(err)
             })
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('http://localhost:8000/api/allUsers')
-            .then(res=>{
+            .then(res => {
                 setUsers(res.data)
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err)
             })
-    },[])
+    }, [])
 
-    const findName = (user_id)=>{
-        let user = users?.find(u=>u._id===user_id)
+    const findName = (user_id) => {
+        let user = users?.find(u => u._id === user_id)
         return user?.firstName
     }
 
     return (
-        <div className='bg-color'>
+        <div>
             <header>
                 <Nav />
             </header>
+            <div className='bg-color'>
+                <div className='allTask-bg'>
 
-            <div className='allTask-bg'>
-                
-                <h2>All Tasks</h2>
-                <div className='content-container'>
-                    <table className='content-table'>
-                        <thead>
-                            <tr>
-                                <th>Task</th>
-                                <th>Date Due</th>
-                                <th>Assigned To</th>
-                            </tr>
-                        </thead>
-                        {
-                            
-                            allTasks?.map((task) => (
-                                <tbody key={task._id}>
-                                    <tr>
-                                        <td>{task.task}</td>
-                                        <td>{formatDate(task.date)}</td>
-                                        {
+                    <h2>All Tasks</h2>
+                    <div className='content-container'>
+                        <table className='content-table'>
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Date Due</th>
+                                    <th>Assigned To</th>
+                                </tr>
+                            </thead>
+                            {
+
+                                allTasks?.map((task) => (
+                                    <tbody key={task._id}>
+                                        <tr>
+                                            <td>{task.task}</td>
+                                            <td>{formatDate(task.date)}</td>
+                                            {
                                                 task?.user_id
-                                                    ?<td>{findName(task.user_id)}</td> 
-                                                    :<td>Not Assigned</td>
-                                        }
-                                    </tr>
-                                </tbody>
-                            ))
-                        }
-                    </table>
+                                                    ? <td>{findName(task.user_id)}</td>
+                                                    : <td>Not Assigned</td>
+                                            }
+                                        </tr>
+                                    </tbody>
+                                ))
+                            }
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div className='myTask-bg'>
-                <h2>My Tasks</h2>
-                <div className='content-container'>
-                    <table className='content-table'>
-                        <thead>
-                            <tr>
-                                <th>Task</th>
-                                <th>Date Due</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        {
-                            
-                            userTasks?.map((task) => (
-                                <tbody key={task._id}>
-                                    <tr>
-                                        <td>{task.task}</td>
-                                        <td>{formatDate(task.date)}</td>
-                                        <td><Link to={`/task/details/${task._id}`}>Details</Link></td>
-                                    </tr>
-                                </tbody>
-                            ))
-                        }
-                    </table>
+                <div className='myTask-bg'>
+                    <h2>My Tasks</h2>
+                    <div className='content-container'>
+                        <table className='content-table'>
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Date Due</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                            {
+
+                                userTasks?.map((task) => (
+                                    <tbody key={task._id}>
+                                        <tr>
+                                            <td>{task.task}</td>
+                                            <td>{formatDate(task.date)}</td>
+                                            <td><Link to={`/task/details/${task._id}`}>Details</Link></td>
+                                        </tr>
+                                    </tbody>
+                                ))
+                            }
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

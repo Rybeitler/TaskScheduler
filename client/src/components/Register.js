@@ -31,10 +31,12 @@ const Register = (props) => {
                 navigate(`/dashboard/${res?.data?.user?.role}`)
             })
             .catch((err) => {
-                console.log('here'+err);
-                if(!err.response.data.verified){
+                console.log(err)
+                if(err.response.data.message){
                     console.log("REGISTER ERROR", err.response.data.message)
                     setErrors({email:{message:err.response.data.message}})
+                }else{
+                    setErrors(err.response.data.error.errors)
                 }
             })
     }
@@ -42,8 +44,8 @@ const Register = (props) => {
     return (
         <div className={loginreg.body}>
 
-            <p className={loginreg.welcome}>Welcome to </p>
-            <p className={loginreg.pageTitle}>Work Register</p>
+            <p className={loginreg.welcome}>Welcome to TaskScheduler</p>
+            <p className={loginreg.pageTitle}></p>
 
             <div className={loginreg.container}>
                 <div className={loginreg.forms}>
