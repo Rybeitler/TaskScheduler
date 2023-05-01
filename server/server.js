@@ -14,6 +14,4 @@ const taskRoutes = require('./routes/task.routes');
 userRoutes(app);
 taskRoutes(app);
 
-// Test comment gang
-
 app.listen(8000, () => console.log("The server is all fired up on port 8000"));

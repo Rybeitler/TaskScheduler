@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Nav from './Nav';
-import './taskForm.css'
 
 const TaskForm = (props) => {
 
@@ -34,38 +33,56 @@ const TaskForm = (props) => {
     }
 
     return(
-        <div className='taskForm-bg'>
+        <div>
             <header>
-                <Nav />
+                <Nav/>
             </header>
-            <div className='task-flex'>
-                <form onSubmit={handleSubmit} className='form-container'>
-                    <h1>Add a New Task</h1>
-                    <label>Task</label>
-                    <input type='text' onChange={handleInputChange} value={task.task} name='task'/>
-                    {
-                        errors.task?
-                        <p className='errors'>{errors.task.task}</p>:
-                        null
-                    }
+            <div className='content-container'>
+                <div className='container'>
+                    <div className="container-title">
+                        <h1>New Task</h1>
+                    </div>
+                    <div className="form-container">
+                        <form onSubmit={handleSubmit} className='form-container'>
+                            <div className="form-group">
+                                <div className="form-control">
+                                    <label className="input-label">Task:</label>
+                                </div>
+                                <input type='text' className="input" onChange={handleInputChange} value={task.task} name='task'/>
+                            </div>
+                            {
+                                errors.task?
+                                <p className='errors'>{errors.task.task}</p>:
+                                null
+                            }
 
-                    <label>Date</label>
-                    <input type='date' onChange={handleInputChange} value={task.date} name='date'/>
-                    {
-                        errors.date?
-                        <p className='errors'>{errors.task.date}</p>:
-                        null
-                    }
+                            <div className="form-group">
+                                <div className="form-control">
+                                    <label className="input-label">Date:</label>
+                                </div>
+                                <input type='date' className="input" onChange={handleInputChange} value={task.date} name='date'/>
+                            </div>
+                            {
+                                errors.date?
+                                <p className='errors'>{errors.task.date}</p>:
+                                null
+                            }
 
-                    <label>Instructions</label>
-                    <textarea onChange={handleInputChange} value={task.instructions} name='instructions' rows={5} cols={30}/>
-                    {
-                        errors.instructions?
-                        <p className='errors'>{errors.task.instructions}</p>:
-                        null
-                    }
-                    <button class="button-4"role="button">Submit</button>
-                </form>
+                            <div className="form-group">
+                                <div className="form-control">
+                                    <label className="input-label">Instructions</label>
+                                </div>
+                                <textarea onChange={handleInputChange} className="input" value={task.instructions} name='instructions' rows={5} cols={30}/>
+                            </div>
+                            {
+                                errors.instructions?
+                                <p className='errors'>{errors.task.instructions}</p>:
+                                null
+                            }
+                            <button class="button-4"role="button">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -1,120 +1,99 @@
 
-
-
 /* Shared style */
 .content-container{
     display: flex;
     justify-content: center;
-    padding: 20px;
+    background-color: #81b4ee;
+    height: 100vh;
 }
 
-.content-table{
+.container {
+    margin: 50px 100px 10px 100px;
     padding: 20px;
-    border: 2px solid white;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    height: 700px;
+    width: 600px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+tr:hover {
+    background: #ddd;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+    min-width: 550px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
 }
 
 .content-table thead tr {
-    background: #3e4a61;
-    color: #d9dad7;
+    background-color: #023d6b;
+    color: #fff;
     text-align: center;
     font-weight: bold;
 }
 
-.content-table th,
-.content-table td {
-    padding: 10px 24px;
+.content-table th, .content-table td {
+    padding: 12px 15px;
 }
 
 .content-table tbody tr {
-    border-bottom: 1px solid #c24d2c;
+    border-bottom: 1px solid #ddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {
-    background-color: #eeeeee;
+    background-color: #f3f3f3;
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #3e4a61;
+    border-bottom: 2px solid #023d6b;
+}
+
+textarea {
+    resize: none;
 }
 
 
 /* USER DASHBAORD STYLES */
 .bg-color{
-    background-color: #0092ca;
+    background-color: #81b4ee;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .allTask-bg{
     /* height: 400px; */
 }
 
-.myTask-bg {
-    
-    height: 600px;
-}
-
 /* Manager Dashboard */
 .manager-bg {
-    background-color: #a2a8d3;
+    background-color: #81b4ee;
     height: 1000px;
 }
 
 /* < !-- HTML !--><button class="button-4"role="button">Button 4</button> */
 /* CSS */
 .button-5 {
-    appearance: none;
-    background-color: #e3e3e3;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #24292E;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
+    width: 120px;
+    height: 40px;
+    border:none;
+    color: #fff;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    background-color:#265df2;
+    padding: 8px;
 }
 
 .button-5:hover {
-    background-color: #93e4c1;
+    background-color: #2553d3;
     text-decoration: none;
     transition-duration: 0.1s;
-}
-
-.button-5:disabled {
-    background-color: #FAFBFC;
-    border-color: rgba(27, 31, 35, 0.15);
-    color: #959DA5;
-    cursor: default;
-}
-
-.button-5:active {
-    background-color: #EDEFF2;
-    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-    transition: none 0s;
-}
-
-.button-5:focus {
-    outline: 1px transparent;
-}
-
-.button-5:before {
-    display: none;
-}
-
-.button-5:-webkit-details-marker {
-    display: none;
 }

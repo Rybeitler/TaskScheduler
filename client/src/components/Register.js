@@ -44,8 +44,7 @@ const Register = (props) => {
     return (
         <div className={loginreg.body}>
 
-            <p className={loginreg.welcome}>Welcome to TaskScheduler</p>
-            <p className={loginreg.pageTitle}></p>
+            <p className={loginreg.pageTitle}>Welcome to TaskScheduler</p>
 
             <div className={loginreg.container}>
                 <div className={loginreg.forms}>
@@ -53,35 +52,35 @@ const Register = (props) => {
                         <form onSubmit={submitHandler}>
                         <span className={loginreg.title}>Register</span>
                             <div className={loginreg.inputField}>
-                                <input type="text" name="firstName" placeholder="Enter your first name" onChange={onChangeHandler} value={userReg.firstName}/>
+                                <input type="text" name="firstName" placeholder="Enter your first name" onChange={onChangeHandler} value={userReg.firstName} class={loginreg.input}/>
                             </div>
                             {
                                 errors.firstName?
                                 <p className={loginreg.error}>{errors.firstName.message}</p>:null
                             }
                             <div className={loginreg.inputField}>
-                                <input type="text" name="lastName" placeholder="Enter your last name" onChange={onChangeHandler} value={userReg.lastName}/>
+                                <input type="text" name="lastName" placeholder="Enter your last name" onChange={onChangeHandler} value={userReg.lastName} class={loginreg.input}/>
                             </div>
                             {
                                 errors.lastName?
                                 <p className={loginreg.error}>{errors.lastName.message}</p>:null
                             }
                             <div className={loginreg.inputField}>
-                                <input type="text" name="email" placeholder="Enter your email" onChange={onChangeHandler} value={userReg.email}/>
+                                <input type="text" name="email" placeholder="Enter your email" onChange={onChangeHandler} value={userReg.email} class={loginreg.input}/>
                             </div>
                             {
                                 errors.email?
                                 <p className={loginreg.error}>{errors.email.message}</p>:null
                             }
                             <div className={loginreg.inputField}>
-                                <input type="password" name="password" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.password}/>
+                                <input type="password" name="password" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.password} class={loginreg.input}/>
                             </div>
                             {
                                 errors.password?
                                 <p className={loginreg.error}>{errors.password.message}</p>:null
                             }
                             <div className={loginreg.inputField}>
-                                <input type="password" name="confirmPassword" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.confirmPassword}/>
+                                <input type="password" name="confirmPassword" placeholder="Enter your password" onChange={onChangeHandler} value={userReg.confirmPassword} class={loginreg.input}/>
                             </div>
                             {
                                 errors.confirmPassword?

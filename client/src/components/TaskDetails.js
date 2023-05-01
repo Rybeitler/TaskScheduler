@@ -48,37 +48,39 @@ const TaskDetails = () => {
             .catch(err=>console.log(err))
     }
     return (
-        <div className='bg-color'>
+        <div>
             <Nav/>
-            <div>
-                {loaded &&
-                    <div className='task-container'>
-                        <div className='task-content'>
-                            <h2>Details for Task: {task?.task}</h2>
-                            <p><span style={{fontWeight:"bold"}}>Assigned to:</span> {auth?.user?.firstName}</p>
-                            <p><span style={{fontWeight:"bold"}}>Due on:</span> {formatDate(task?.date)}</p>
-                            <p><span style={{fontWeight:"bold"}}>Instructions:</span> {task.instructions}</p>
+            <div className='content-container'>
+                <div className='container'>
+                    {loaded &&
+                        <div className='task-container'>
+                            <div className='task-content'>
+                                <h2>{task?.task}</h2>
+                                <p><span style={{fontWeight:"bold"}}>Assigned to:</span> {auth?.user?.firstName}</p>
+                                <p><span style={{fontWeight:"bold"}}>Due on:</span> {formatDate(task?.date)}</p>
+                                <p><span style={{fontWeight:"bold"}}>Instructions:</span> {task.instructions}</p>
+                                <br></br>
+                            </div>
                         </div>
-                    </div>
-                }
-                <div className='note-form'>
-                    <div className='notes'>
-                        <h2>User Notes:</h2>
-                        {
-                            task?.notes?.map((note, idx)=>(
-                                <p key={idx} >{note}</p>
-                            ))
-                        }
-                    </div>
-                    <form onSubmit={addNote}>
-                        <h4>Add A New Note:</h4>
-                        <textarea name="newNote" cols="30" rows="3" onChange={changeHandler} value={note}></textarea>
-                        <div>
-                            <button class="button-4"role="button">Add Note</button>
+                    }
+                    <div className='note-container'>
+                        <div className='notes'>
+                            <h2>User Notes</h2>
+                            {
+                                task?.notes?.map((note, idx)=>(
+                                    <p key={idx} >{note}</p>
+                                ))
+                            }
                         </div>
-                    </form>
-                    <div className='remove-task'>
-                        <button onClick={removeTask}  class="button-24"role="button">Task Completed</button>
+                        <form onSubmit={addNote}>
+                            <div className="note-form">
+                                <input className="input" name="newNote" onChange={changeHandler} value={note}></input>
+                                <button class="button-4"role="button">Add Note</button>
+                            </div>
+                        </form>
+                        <div className='remove-task'>
+                            <button onClick={removeTask}  class="button-24"role="button">Task Completed</button>
+                        </div>
                     </div>
                 </div>
             </div>

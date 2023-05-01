@@ -8,7 +8,7 @@
 }
 
 .body {
-    background-color:#4070f4;
+    background: #023d6b;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -43,6 +43,7 @@
 .welcome, .pageTitle{
     margin-top: 20px;
     font-size: 40px;
+    color: white;
 }
 
 .pageTitle{

@@ -19,11 +19,9 @@ const ManagerDashboard = () => {
     const [users, setUsers] = useState([])
     const [allTask, setAllTask] = useState([])
 
-
     const newTask = () => {
         navigate('/newTask')
     }
-
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/allTask`)
@@ -52,40 +50,46 @@ const ManagerDashboard = () => {
 
 
     return (
-        <div className='manager-bg'>
+        <div>
             <header>
-                <Nav />
+                <Nav/>
             </header>
             <div className='content-container'>
-                <table className='content-table'>
-                    <thead>
-                        <tr>
-                            <th>Task</th>
-                            <th>Date Due</th>
-                            <th>Currently Assigned?</th>
-                            <th>Assign Task</th>
-                        </tr>
-                    </thead>
-                    {
-                        allTask?.map((task) => (
-                            <tbody key={task._id}>
+                <div className='container'>
+                    <div className='container-title'>
+                    <h2>All Tasks</h2>
+                    </div>
+
+                    <div className='container-table'>
+                        <table className='content-table'>
+                            <thead>
                                 <tr>
-                                    <td>{task.task}</td>
-                                    <td>{formatDate(task.date)}</td>
-                                    {
-                                        task?.user_id
-                                            ?<td>{findName(task.user_id)}</td> 
-                                            :<td>Not Assigned</td>
-                                    }
-                                    <td><AssignForm users={users} allTask={allTask} setAllTask={setAllTask} id={task._id}/></td>
+                                    <th>Task</th>
+                                    <th>Date Due</th>
+                                    <th>Currently Assigned?</th>
+                                    <th>Assign Task</th>
                                 </tr>
-                            </tbody>
-                        ))
-                    }
-                </table>
-            </div>
-            <div>
-                <button onClick={newTask} class="button-5"role="button">New Task</button>
+                            </thead>
+                            {
+                                allTask?.map((task) => (
+                                    <tbody key={task._id}>
+                                        <tr>
+                                            <td>{task.task}</td>
+                                            <td>{formatDate(task.date)}</td>
+                                            {
+                                                task?.user_id
+                                                    ?<td>{findName(task.user_id)}</td> 
+                                                    :<td>Not Assigned</td>
+                                            }
+                                            <td><AssignForm users={users} allTask={allTask} setAllTask={setAllTask} id={task._id}/></td>
+                                        </tr>
+                                    </tbody>
+                                ))
+                            }
+                        </table>
+                    </div>
+                    <button onClick={newTask} class="button-5"role="button">New Task</button> 
+                </div>
             </div>
         </div>
     );

@@ -37,8 +37,7 @@ const Login = (props) => {
     return (
         <div className={loginreg.body}>
 
-            <p className={loginreg.welcome}>Welcome to TaskScheduler</p>
-            <p className={loginreg.pageTitle}></p>
+            <p className={loginreg.pageTitle}>Welcome to TaskScheduler</p>
 
             <div className={loginreg.container}>
                 <div className={loginreg.forms}>

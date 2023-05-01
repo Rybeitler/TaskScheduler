@@ -17,7 +17,6 @@ const AssignForm = (props) => {
         setAssignTask(e.target.value)
     }
     
-
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.put(`http://localhost:8000/api/assignUser/${id}`, {assignTask})
@@ -36,10 +35,8 @@ const AssignForm = (props) => {
             })
     }
 
-
-    
     return(
-        <div>
+        <div className="assignForm-container">
             <form onSubmit={handleSubmit}>
             <select name="user"  onChange={handleInputChange} value={assignTask.user_id} >
                 <option value="none" hidden>select a user</option>
@@ -49,7 +46,7 @@ const AssignForm = (props) => {
                     ))
                 }
                 </select>
-                <input type='submit' value='Assign'/>
+                <input className='input-2' type='submit' value='✓'/>
             </form>
         </div>
     )
