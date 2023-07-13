@@ -31,6 +31,7 @@ const Nav = (props) => {
         <body>
             <nav>
                 <label class={Navbar.logo}>TaskScheduler</label>
+                <div>Welcome, {auth?.user?.firstName}</div>
                 <div class={Navbar.links}>
                     {/* Left side links */}
                     <ul class={Navbar.ul}>
